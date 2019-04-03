@@ -18,3 +18,17 @@ body{
     margin-right: 5px; 
     padding: 0.5em; 
 }
+
+.cell{
+    display: inline-block; 
+    margin-right: 10px; 
+    margin-bottom: 10px; 
+    border: 2px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: 0.5em; 
+}
+
+#submitBtn{
+    margin-bottom: 20px; 
+}
+

@@ -11,7 +11,7 @@ var createBtn = function () {
         $("#animalButton").append(button);
     }
 }
-createBtn(); 
+createBtn();
 
 
 // function: when user clicks on a button, go to GIPHY API and grab 10 static gif images 
@@ -35,7 +35,7 @@ var getGif = function () {
             var animateURL = dataSource[j].images.fixed_height.url;
 
             // set the attributes of the images 
-            gifImage.attr("src", stillURL)
+            gifImage.attr("src", stillURL); 
             gifImage.attr("data-still", stillURL);
             gifImage.attr("data-animate", animateURL);
             gifImage.attr("data-status", "still")
@@ -43,8 +43,27 @@ var getGif = function () {
 
             // append ratinf and images into HTML
             var rating = dataSource[j].rating;
-            $("#gifDump").append("<div>Rating: " + rating + "</div>");
-            $("#gifDump").append(gifImage)
+
+            // create a heart icon for the favorites section
+            var heart = $("<div>"); 
+            heart.append("<i class='far fa-heart'></i>"); 
+
+            // Bonus: create a title and an import time for the gif 
+            var title = dataSource[j].title; 
+            var importTime = dataSource[j].import_datetime; 
+
+            //create a div to contain all the variables created above 
+            var container = $("<div>");
+            container.attr("class", "cell")
+            container.append(heart);
+            heartClick(); 
+            container.append("<div>Rating: " + rating + "</div>");
+            container.append("<div>Title: "+title+"</div>"); 
+            container.append("<div>Import Date&Time: "+importTime+"</div>"); 
+            container.append(gifImage); 
+
+            //append the div container to HTML
+            $("#gifDump").append(container);
         }
         // on click event
         //if...else statement: pause and start animation when clicking
@@ -71,11 +90,19 @@ $("#submitBtn").on("click", function () {
     console.log(userInput);
     topics.push(userInput);
     console.log(topics);
-    $("#animalButton").empty(); 
-    createBtn(); 
+    $("#animalButton").empty();
+    createBtn();
 })
 
 // on click event: when user clicks on a button, execute the function 
 $(document.body).on("click", ".topic", getGif);
+
+// function: when user clicks on the heart, the gif will go to the favorites section 
+var heartClick = function () {
+    $(".fa-heart").on("click", function () {
+        $("#favoriteGif").append($(this).siblings());
+        console.log($(this).siblings(".gifs"));
+    })
+}
 
 
