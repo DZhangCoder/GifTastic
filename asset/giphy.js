@@ -106,7 +106,6 @@ var heartClick = function () {
         var copy = $(this).parent().parent().clone();
         $("#favoriteGif").append(copy);
         console.log($(this));
-        changeState();
     })
 }
 
