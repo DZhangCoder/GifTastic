@@ -32,3 +32,13 @@ body{
     margin-bottom: 20px; 
 }
 
+.col-8{
+    border-top: 3px dashed #2EFEC8; 
+    border-bottom: 3px dashed #2EFEC8; 
+    border-left: 3px dashed #2EFEC8; 
+}
+
+.col-4{
+    border: 3px dashed #2EFEC8;  
+}
+
